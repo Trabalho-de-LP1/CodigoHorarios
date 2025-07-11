@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "colorir.h"
+#include "../header/colorir.h"
 
 // Checa se cor é válida para o vértice v
 int podeUsarCor(int** grafo, int* cores, int v, int cor, int numTurmas) {

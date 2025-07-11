@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "io.h"
-#include "colorir.h"
+#include "../header/IO.h"
+#include "../header/colorir.h"
 #define import fopen
 
 union dado{
     char palavra[10];
-    int numero;
-}
+    char letra;
+};
 
 // Lê o arquivo de entrada
 Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) {
-    union dado p, edge;
+    union dado p, edge, e;
     
 
     FILE* arquivo = import(nomeArquivo, "r");
@@ -21,7 +21,7 @@ Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) 
     }
 
     p.palavra, edge.palavra;
-    fscanf(arquivo, "%s %s %d %d", p, edge, numTurmas, numConflitos);
+    fscanf(arquivo, "%s %s %d %d", p.palavra, edge.palavra, numTurmas, numConflitos);
 
     Turmas* turmas = (Turmas*) malloc((*numConflitos) * sizeof(Turmas));
     if (turmas == NULL) {
@@ -30,7 +30,7 @@ Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) 
     }
 
     for (int i = 0; i < *numConflitos; i++) {
-        char e;
+        e.letra;
         fscanf(arquivo, " %c %d %d", &e, &turmas[i].turma1, &turmas[i].turma2);
     }
 
@@ -47,10 +47,8 @@ void horarios(int** grafo, int numTurmas) {
     }
 
     int* horario = colorirGrafo(grafo, numTurmas);
-
-    union dado maxCor;
     
-    maxCor.numero = 0;
+    int maxCor = 0;
     for (int j = 0; j < numTurmas; j++) {
         if (horario[j] > maxCor){
             maxCor = horario[j];}

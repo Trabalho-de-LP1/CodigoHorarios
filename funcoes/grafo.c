@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "grafo.h"
+#include "../header/grafo.h"
 
 // Cria matriz de adjacência e inicializa com 0
 int** criarGrafo(int numTurmas) {

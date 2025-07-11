@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include "grafo.h"   // Funções do grafo
-#include "io.h"      // Funções de entrada/saída
+#include <stdlib.h>
+#include "header/grafo.h"   // Funções do grafo
+#include "header/IO.h"      // Funções de entrada/saída
 
 int main(){
     int turmas, numConflitos;
