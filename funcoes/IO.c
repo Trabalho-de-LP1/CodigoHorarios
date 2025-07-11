@@ -3,6 +3,7 @@
 #include "io.h"
 #include "colorir.h"
 
+// Lê o arquivo de entrada
 Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) {
     FILE* arquivo = fopen(nomeArquivo, "r");
     if (arquivo == NULL) {
@@ -12,9 +13,10 @@ Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) 
 
     char p[5], edge[5];
     fscanf(arquivo, "%s %s %d %d", p, edge, numTurmas, numConflitos);
+
     Turmas* turmas = (Turmas*) malloc((*numConflitos) * sizeof(Turmas));
     if (turmas == NULL) {
-        printf("Erro de alocacao\n");
+        printf("Erro de alocação\n");
         exit(1);
     }
 
@@ -27,6 +29,7 @@ Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) 
     return turmas;
 }
 
+// Gera arquivo com horários agrupados
 void horarios(int** grafo, int numTurmas) {
     FILE* arq = fopen("Horarios.txt", "w");
     if (arq == NULL) {
@@ -38,18 +41,18 @@ void horarios(int** grafo, int numTurmas) {
 
     int maxCor = 0;
     for (int j = 0; j < numTurmas; j++) {
-        if (horario[j] > maxCor) { maxCor = horario[j]; }
+        if (horario[j] > maxCor){
+            maxCor = horario[j];}
     }
 
     for (int i = 0; i <= maxCor; i++) {
-        fprintf(arq, "Horario %d: Turmas ", i + 1);
+        fprintf(arq, "Horário %d: Turmas ", i + 1);
 
         int primeira = 1;
         for (int j = 0; j < numTurmas; j++) {
             if (horario[j] == i) {
                 if (!primeira) {
-                    fprintf(arq, " e ");
-                }
+                    fprintf(arq, " e ");}
                 fprintf(arq, "%d", j + 1);
                 primeira = 0;
             }
@@ -57,7 +60,7 @@ void horarios(int** grafo, int numTurmas) {
         fprintf(arq, "\n");
     }
 
-    fprintf(arq, "\nMenor numero de horarios necessario: %d\n", maxCor + 1);
+    fprintf(arq, "\nMenor número de horários necessário: %d\n", maxCor + 1);
 
     free(horario);
     fclose(arq);
