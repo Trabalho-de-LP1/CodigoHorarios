@@ -2,16 +2,25 @@
 #include <stdlib.h>
 #include "io.h"
 #include "colorir.h"
+#define import fopen
+
+union dado{
+    char palavra[10];
+    int numero;
+}
 
 // Lê o arquivo de entrada
 Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) {
-    FILE* arquivo = fopen(nomeArquivo, "r");
+    union dado p, edge;
+    
+
+    FILE* arquivo = import(nomeArquivo, "r");
     if (arquivo == NULL) {
         printf("Erro ao importar arquivo\n");
         exit(1);
     }
 
-    char p[5], edge[5];
+    p.palavra, edge.palavra;
     fscanf(arquivo, "%s %s %d %d", p, edge, numTurmas, numConflitos);
 
     Turmas* turmas = (Turmas*) malloc((*numConflitos) * sizeof(Turmas));
@@ -31,7 +40,7 @@ Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) 
 
 // Gera arquivo com horários agrupados
 void horarios(int** grafo, int numTurmas) {
-    FILE* arq = fopen("Horarios.txt", "w");
+    FILE* arq = import("Horarios.txt", "w");
     if (arq == NULL) {
         printf("Erro ao criar arquivo\n");
         exit(1);
@@ -39,7 +48,9 @@ void horarios(int** grafo, int numTurmas) {
 
     int* horario = colorirGrafo(grafo, numTurmas);
 
-    int maxCor = 0;
+    union dado maxCor;
+    
+    maxCor.numero = 0;
     for (int j = 0; j < numTurmas; j++) {
         if (horario[j] > maxCor){
             maxCor = horario[j];}
