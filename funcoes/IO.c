@@ -31,7 +31,7 @@ Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) 
 
     for (int i = 0; i < *numConflitos; i++) {
         e.letra;
-        fscanf(arquivo, " %c %d %d", &e, &turmas[i].turma1, &turmas[i].turma2);
+        fscanf(arquivo, " %c %d %d", &e.letra, &turmas[i].turma1, &turmas[i].turma2);
     }
 
     fclose(arquivo);

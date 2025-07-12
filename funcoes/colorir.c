@@ -1,47 +1,73 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "../header/colorir.h"
 
-// Checa se cor é válida para o vértice v
-int podeUsarCor(int** grafo, int* cores, int v, int cor, int numTurmas) {
-    for (int i = 0; i < numTurmas; i++) {
-        if (grafo[v][i] && cores[i] == cor) {
-            return 0; // Cor já usada por vizinho
-        }
+int contaVertices(int n){
+    if(n<=0){
+        return 0;
+    }else{
+        return 1 + contaVertices(n-1);
     }
-    return 1; // Pode usar cor
 }
 
-// Função recursiva: tenta colorir todos os vértices
-int backtrackColorir(int** grafo, int numTurmas, int* cores, int vAtual, int maxCores) {
-    if (vAtual == numTurmas){
-        return 1;} // Todos coloridos
-
-    for (int cor = 0; cor < maxCores; cor++) {
-        if (podeUsarCor(grafo, cores, vAtual, cor, numTurmas)) {
-            cores[vAtual] = cor; // Atribui cor
-            if (backtrackColorir(grafo, numTurmas, cores, vAtual + 1, maxCores)){
-                return 1;} // Sucesso
-            cores[vAtual] = -1; // Desfaz (backtrack)
-        }
-    }
-    return 0; // Falhou
-}
-
-// Tenta coloração ótima (mínimo de cores)
-int* colorirGrafo(int** grafo, int numTurmas) {
+int* colorirGrafo(int** grafo, int numTurmas){
     int* cores = (int*) malloc(numTurmas * sizeof(int));
-    if (cores == NULL) {
-        printf("Erro de alocação\n");
+    int* grau = (int*) malloc(numTurmas * sizeof(int));
+    int* ordem = (int*) malloc(numTurmas * sizeof(int));
+
+    if(cores == NULL || grau == NULL || ordem == NULL){
+        printf("erro ao alocar memoria em colorirGrafo\n");
         exit(1);
     }
 
-    for (int i = 0; i < numTurmas; i++) cores[i] = -1;
-
-    for (int maxCores = 1; maxCores <= numTurmas; maxCores++) {
-        if (backtrackColorir(grafo, numTurmas, cores, 0, maxCores)){
-        break;}
+    // Calcula grau
+    for (int i = 0; i < numTurmas; i++){
+        grau[i] = 0;
+        for (int j = 0; j < numTurmas; j++){
+            if (grafo[i][j]){
+                grau[i]++;}
+        }
+        cores[i] = -1;
+        ordem[i] = i;
     }
 
+    // Ordena decrescente
+    for (int i = 0; i < numTurmas - 1; i++){
+        for (int j = i + 1; j < numTurmas; j++){
+            if (grau[ordem[i]] < grau[ordem[j]]){
+                int temp = ordem[i];
+                ordem[i] = ordem[j];
+                ordem[j] = temp;
+            }
+        }
+    }
+
+    printf("Total de vertices contados: %d", contaVertices(numTurmas));
+
+    int numCores = 0;
+    for (int i = 0; i < numTurmas; i++){
+        int v = ordem[i];
+        if (cores[v] == -1){
+            cores[v] = numCores;
+            for (int j = i + 1; j < numTurmas; j++){
+                int u = ordem[j];
+                if (cores[u] == -1){
+                    int pode = 1;
+                    for (int k = 0; k < numTurmas; k++){
+                        if (grafo[u][k] && cores[k] == numCores){
+                            pode = 0; 
+                            break;
+                        }
+                    }
+                    if (pode){
+                        cores[u] = numCores;}
+                }
+            }
+            numCores++;
+        }
+    }
+
+    free(grau);
+    free(ordem);
     return cores;
 }
