@@ -5,3 +5,7 @@ Marcos Vitor Silva Vasconcelos <br>
 Maria Clara Silva Lopes <br>
 Iago Calazans Silva Ramos <br>
 ## Trabalho e seu objetivo <b>:
+?
+# Propósito e Aplicação
+?
+### Implemetação 
