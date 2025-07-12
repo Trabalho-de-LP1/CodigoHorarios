@@ -1,4 +1,4 @@
-# Organização de Hor
+# Organização de Horários
 Trabalho de Linguagem de Programação 1
 ## INTEGRANTES DO TRABALHO:
 Marcos Vitor Silva Vasconcelos <br>
