@@ -1,6 +1,6 @@
 # Organização de Horários
 Trabalho de Linguagem de Programação 1
-## INTEGRANTES DO TRABALHO:
+## Integrantes do Trabalho:
 Marcos Vitor Silva Vasconcelos <br>
 Maria Clara Silva Lopes <br>
 Iago Calazans Silva Ramos <br>
