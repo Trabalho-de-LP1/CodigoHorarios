@@ -1,9 +1,9 @@
 # Organização de Horários
 Trabalho de Linguagem de Programação 1
 ## Integrantes do Trabalho:
+Iago Calazans Silva Ramos <br>
 Marcos Vitor Silva Vasconcelos <br>
 Maria Clara Silva Lopes <br>
-Iago Calazans Silva Ramos <br>
 ## Trabalho e seu objetivo <b>:
 
 O objetivo desse trabalho é aplicar conceitos de Teoria dos Grafos e Coloração de Grafos para resolver um problema real de alocação de horários escolares de forma otimizada, evitando conflitos de turmas com alunos em comum.
@@ -17,9 +17,13 @@ O código principal desenvolvido em linguagem C realiza essa tarefa da seguinte 
 
 # Instrução para utilização do programa
 1- O programa deve ser executado em um compilador de linguagem C;
+
 2- O arquivo a ser analisado deve estar no mesmo diretório do programa;
+
 3- Para executar, no terminal digite os seguintes comando: "gcc main.c funcoes/io.c funcoes/grafo.c funcoes/colirir.c -o horarios", depois digite "./horarios";
+
 4- Escreva o nome do arquivo a ser analisado;
+
 5- O arquivo com a resposta sera criado no diretório do programa;
 
 # Enunciado do desafio
