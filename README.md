@@ -15,7 +15,12 @@ Determinar a mínima quantidade de horários distintos necessária para alocar t
 ### Implementação 
 O código principal desenvolvido em linguagem C realiza essa tarefa da seguinte forma: o programa lê um arquivo de entrada contendo o número de turmas e os pares de turmas com conflitos; cria um grafo na forma de matriz de adjacência; preenche esse grafo com base nos conflitos informados; e aplica um algoritmo de coloração de vértices, atribuindo um horário (cor) a cada turma, de modo que turmas com conflitos não compartilhem o mesmo horário. Por fim, o programa exibe a alocação de horários e libera a memória utilizada.
 
-O programa deve ser executado utilizando um compilador de linguagem C.
+# Instrução para utilização do programa
+1- O programa deve ser executado em um compilador de linguagem C;
+2- O arquivo a ser analisado deve estar no mesmo diretório do programa;
+3- Para executar, no terminal digite os seguintes comando: "gcc main.c funcoes/io.c funcoes/grafo.c funcoes/colirir.c -o horarios", depois digite "./horarios";
+4- Escreva o nome do arquivo a ser analisado;
+5- O arquivo com a resposta sera criado no diretório do programa;
 
 # Enunciado do desafio
 
@@ -39,4 +44,9 @@ Horário 1 (Vermelho): Turmas A e D
 Horário 2 (Azul): Turmas B e E
 Horário 3 (Verde): Turmas C e F
 
+Algoritimo testado em:
+* Windows 11
 
+Compilador:
+* Code::Blocks
+* Visual Studio Code
