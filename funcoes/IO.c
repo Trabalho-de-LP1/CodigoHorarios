@@ -9,7 +9,6 @@ union dado{
     char letra;
 };
 
-// Lê o arquivo de entrada
 Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) {
     union dado p, edge, e;
     
@@ -38,7 +37,6 @@ Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos) 
     return turmas;
 }
 
-// Gera arquivo com horários agrupados
 void horarios(int** grafo, int numTurmas) {
     FILE* arq = import("Horarios.txt", "w");
     if (arq == NULL) {

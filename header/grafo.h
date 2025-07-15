@@ -3,8 +3,8 @@
 
 #include "io.h"
 
-int** criarGrafo(int numTurmas);            // Cria matriz de adjacência
-void preencherGrafo(int** grafo, Turmas* conflitos, int numConflitos); // Marca arestas
-void liberarGrafo(int** grafo, int numTurmas); // Libera matriz
+int** criarGrafo(int numTurmas);           
+void preencherGrafo(int** grafo, Turmas* conflitos, int numConflitos); 
+void liberarGrafo(int** grafo, int numTurmas); 
 
 #endif

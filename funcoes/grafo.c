@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include "../header/grafo.h"
 
-// Cria matriz de adjacência e inicializa com 0
 int** criarGrafo(int numTurmas) {
     int** grafo = (int**) malloc(numTurmas * sizeof(int*));
     for (int i = 0; i < numTurmas; i++) {
@@ -12,7 +11,6 @@ int** criarGrafo(int numTurmas) {
     return grafo;
 }
 
-// Preenche matriz com os conflitos
 void preencherGrafo(int** grafo, Turmas* conflitos, int numConflitos) {
     for (int i = 0; i < numConflitos; i++) {
         int u = conflitos[i].turma1 - 1;
@@ -22,7 +20,6 @@ void preencherGrafo(int** grafo, Turmas* conflitos, int numConflitos) {
     }
 }
 
-// Libera matriz de adjacência
 void liberarGrafo(int** grafo, int numTurmas) {
     for (int i = 0; i < numTurmas; i++){
         free(grafo[i]);}

@@ -4,9 +4,9 @@
 typedef struct {
     int turma1;
     int turma2;
-} Turmas; // Guarda pares de conflito
+} Turmas; 
 
-Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos); // Lê arquivo de entrada
-void horarios(int** grafo, int numTurmas); // Resolve coloração e grava arquivo de saída
+Turmas* ler_arquivo(const char* nomeArquivo, int* numTurmas, int* numConflitos); 
+void horarios(int** grafo, int numTurmas); 
 
 #endif

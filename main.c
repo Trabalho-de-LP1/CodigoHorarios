@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "header/grafo.h"   // Funções do grafo
-#include "header/IO.h"      // Funções de entrada/saída
+#include "header/grafo.h"   
+#include "header/IO.h"      
 
 int main(){
     int turmas, numConflitos;
     char arquivo[100];
 
     printf("Digite o nome do arquivo de entrada: ");
-    scanf("%s", arquivo);  // Lê o nome do arquivo do usuário
+    scanf("%s", arquivo);  
 
-    Turmas* conflitos = ler_arquivo(arquivo, &turmas, &numConflitos); // Lê dados do arquivo
+    Turmas* conflitos = ler_arquivo(arquivo, &turmas, &numConflitos); 
 
-    int** grafo = criarGrafo(turmas);            // Cria matriz de adjacência
-    preencherGrafo(grafo, conflitos, numConflitos); // Preenche matriz com conflitos
+    int** grafo = criarGrafo(turmas);            
+    preencherGrafo(grafo, conflitos, numConflitos); 
 
-    horarios(grafo, turmas);   // Faz coloração e salva resultado
+    horarios(grafo, turmas);   
 
-    free(conflitos);           // Libera memória de conflitos
-    liberarGrafo(grafo, turmas); // Libera memória do grafo
+    free(conflitos);           
+    liberarGrafo(grafo, turmas);
     return 0;
 }

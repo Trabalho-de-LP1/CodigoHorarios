@@ -20,7 +20,6 @@ int* colorirGrafo(int** grafo, int numTurmas){
         exit(1);
     }
 
-    // Calcula grau
     for (int i = 0; i < numTurmas; i++){
         grau[i] = 0;
         for (int j = 0; j < numTurmas; j++){
@@ -31,7 +30,6 @@ int* colorirGrafo(int** grafo, int numTurmas){
         ordem[i] = i;
     }
 
-    // Ordena decrescente
     for (int i = 0; i < numTurmas - 1; i++){
         for (int j = i + 1; j < numTurmas; j++){
             if (grau[ordem[i]] < grau[ordem[j]]){
